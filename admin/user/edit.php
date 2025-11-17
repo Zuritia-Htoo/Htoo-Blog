@@ -20,9 +20,10 @@
         if(empty($name)){
             $nameError = "Name is required";
         } else {
-            $stmt = $conn->prepare("UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?");
-            $stmt->bind_param("sssi", $name, $email, $password, $userID);
+            $stmt = $conn->prepare("UPDATE users SET name = ?, email = ?, password = ?, role = ? WHERE id = ?");
+            $stmt->bind_param("ssssi", $name, $email, $password, $role, $userID);
             $stmt->execute();
+
 
             echo "<script>location.href='index.php?page=users'</script>";
             exit();
